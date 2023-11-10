@@ -1,0 +1,7 @@
+{
+  "name": "PPSBookOnline",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
