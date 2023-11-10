@@ -1,3 +1,12 @@
+<b>Set Path to environment.ts:</b><br/>
+export const environment = {<br/>
+  production: false,<br/>
+  baseUrl:'http://localhost/webservice_ppsbook/webservice',<br/>
+  imageUrl:'http://localhost/bookonline/assets'<br/>
+};<br/>
+
+ ###################################################
+ <br/>
 <b>Ionic:</b><br/>
    Ionic CLI                     : 7.1.1 (/usr/local/lib/node_modules/@ionic/cli)<br/>
    Ionic Framework               : @ionic/angular 7.5.2<br/>
