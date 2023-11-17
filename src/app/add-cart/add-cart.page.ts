@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-add-cart',
@@ -12,8 +12,9 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./add-cart.page.scss'],
 })
 export class AddCartPage implements OnInit {
+
   listCart: any = [];
-  totalSum: any;
+  totalSum: number;
   totalSumQty: number;
   qty_book: number;
   price_book: number;
@@ -26,13 +27,14 @@ export class AddCartPage implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute,
     private http: HttpClient,
     public router: Router,
     private alertController: AlertController,
     private loadingCtral: LoadingController
   ) {}
   
+
+
   /** loading page**/
   async presentLoading() {
     this.loading = await this.loadingCtral.create({
@@ -48,14 +50,7 @@ export class AddCartPage implements OnInit {
 
   ngOnInit(): void {
     this.initializeApp();
-  }
-
-  increment(value: number) {
-    console.log('increment =' + value);
-  }
-
-  decrement(value: any) {
-    console.log('decrement =' + value);
+    
   }
 
   async getListCart() {
@@ -67,12 +62,16 @@ export class AddCartPage implements OnInit {
 
     /** list name category **/
     this.http.get(this.webServiceUrl + '/ws_list_cart.php').subscribe((res) => {
-      this.listCart = res;
-      console.log(res);
-      console.log('length = ' + this.listCart.length);
 
+      if(res !== 'null'){
+        this.listCart = res;
+      }else{
+        this.listCart === '';
+      }
+      console.log(this.listCart.length);
       this.totalSum = this.getTotalCost();
       this.totalSumQty = this.getQTYCost();
+      
     });
     loading.dismiss();
   }
@@ -148,4 +147,11 @@ export class AddCartPage implements OnInit {
         }
       });
   }
+
+
+  gotoCheckout(){
+    this.router.navigate(['/checkout-cart']);
+  }
+
+  
 }

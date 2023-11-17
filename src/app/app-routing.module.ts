@@ -21,6 +21,18 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'checkout-cart',
+    loadChildren: () => import('./checkout-cart/checkout-cart.module').then( m => m.CheckoutCartPageModule)
+  },
+  {
+    path: 'history-cart',
+    loadChildren: () => import('./history-cart/history-cart.module').then( m => m.HistoryCartPageModule)
+  },
+  {
+    path: 'detailhistory-cart/:id',
+    loadChildren: () => import('./detailhistory-cart/detailhistory-cart.module').then( m => m.DetailhistoryCartPageModule)
   }
 ];
 @NgModule({

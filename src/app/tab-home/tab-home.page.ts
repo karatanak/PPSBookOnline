@@ -13,10 +13,10 @@ import { AlertController } from '@ionic/angular';
 
 export class TabHomePage implements OnInit {
 
-
   dataList :any;
-  imageBaseUrl = environment.imageUrl;
-  webServiceUrl = environment.baseUrl;
+  imageBaseUrl = environment.imageUrl; // webservice image
+  webServiceUrl = environment.baseUrl; // webservice databases
+  loading: any;
 
   httpHeader = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -47,26 +47,21 @@ export class TabHomePage implements OnInit {
     }
 
     gotoDetailBook(id_book:any){
-      console.log("go to DetailBook"+id_book);
-      this.router.navigate(['/detail-book',id_book]);
+      console.log("go to DetailBook"+id_book); 
+      this.router.navigate(['/detail-book',id_book]);//ส่งค่าเป็น id ไปที่หน้า detail-book
     }
 
     AddToCart(product: any) {
       console.log('Cart : ' + product);
       const data = {
         var_id_book: product.id_book,
+        var_image_book: product.image_book,
         var_name_book: product.namebook_book,
         var_price_book: product.price_book,
         var_qty: '1',
       };
   
-      this.http
-        .post(
-          this.webServiceUrl + '/ws_add_cart.php',
-          JSON.stringify(data),
-          this.httpHeader
-        )
-        .subscribe((res) => {
+      this.http.post(this.webServiceUrl + '/ws_add_cart.php', JSON.stringify(data),this.httpHeader).subscribe((res) => {
           if(res === 'success'){
             this.showAlertSuccess();
           }else{

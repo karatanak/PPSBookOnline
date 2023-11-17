@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { AlertController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.page.html',
@@ -70,6 +71,7 @@ export class CategoryPage implements OnInit {
     console.log('Cart : ' + product.id_book);
     const data = {
       var_id_book: product.id_book,
+      var_image_book: product.image_book,
       var_name_book: product.namebook_book,
       var_price_book: product.price_book,
       var_qty: '1',
@@ -131,7 +133,8 @@ export class CategoryPage implements OnInit {
 
   gotoDetailBook(id_book:any){
     console.log("go to DetailBook"+id_book);
-    //this.router.navigate(['/category',id_book_cate]);
+    this.router.navigate(['/detail-book',id_book]);
   }
+
 
 }

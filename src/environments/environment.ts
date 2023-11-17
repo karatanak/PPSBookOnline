@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl:'http://localhost/webservice_ppsbook/webservice',
-  imageUrl:'http://localhost/bookonline/assets'
+  baseUrl:'http://localhost/webservice_ppsbook/webservice', // webservice
+  imageUrl:'http://localhost/web_pps_bookonline/assets' // wenservice ของ backoffice
 };
 
 /*

@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-detail-book',
   templateUrl: './detail-book.page.html',
@@ -24,12 +25,13 @@ export class DetailBookPage implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     public router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.getDetailBook(id);
+    const id = this.route.snapshot.paramMap.get('id');// รับค่าเป็น id จาก tab-home
+    this.getDetailBook(id); //รับค่าจาก url
   }
 
   getDetailBook(id: any) {
@@ -45,6 +47,7 @@ export class DetailBookPage implements OnInit {
     console.log('Cart : ' + product.id_book);
     const data = {
       var_id_book: product.id_book,
+      var_image_book: product.image_book,
       var_name_book: product.namebook_book,
       var_price_book: product.price_book,
       var_qty: '1',
@@ -108,4 +111,6 @@ export class DetailBookPage implements OnInit {
   gotoBack() {
     this.router.navigate(['/tabs/tab-home']);
   }
+
+
 }

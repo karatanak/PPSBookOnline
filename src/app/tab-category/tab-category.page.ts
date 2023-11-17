@@ -11,7 +11,7 @@ import { LoadingController, InfiniteScrollCustomEvent } from '@ionic/angular';
 })
 export class TabCategoryPage implements OnInit {
   dataList :any;
-  webServiceUrl = environment.baseUrl;
+  webServiceUrl = environment.baseUrl; // file enviroments ที่เก็บพวก webservice
 
   constructor(
     public router:Router,
